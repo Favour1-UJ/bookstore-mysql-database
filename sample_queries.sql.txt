@@ -1,0 +1,21 @@
+-- Total sale made on '2025-01-15(yyyy-mm-dd)
+SELECT sum(S.Total_amount* T.Quantity_sold) AS Total_Sales
+FROM Sales AS S
+JOIN Transactions AS T
+ON S.Sales_id = T.Sales_id
+WHERE S.Sales_date ='2025-01-15';
+
+
+-- Books written by a particular author (James)
+SELECT BI.Title, CONCAT(A.First_name, " ", A.Last_name) AS Authors_Full_name
+FROM book_inventory AS BI
+	JOIN authors AS A
+		ON BI.Author_id = A. Author_id
+WHERE A.First_name = 'James';
+
+-- items sold in a particular sale(Sales_id =35)
+SELECT T. Sales_id, T.Quantity_sold, BI. Title
+FROM Transactions AS T
+JOIN Book_inventory AS BI
+ON T.Book_id = BI. Book_id
+WHERE T.Sales_id = 35;
